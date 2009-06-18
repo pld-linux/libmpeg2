@@ -72,6 +72,7 @@ Statyczne biblioteki dekodera MPEG-2.
 %setup -q
 
 %build
+CFLAGS="%{rpmcflags} -DCOFFEE_BREAK=1"
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
