@@ -1,0 +1,20 @@
+--- libmpeg2-0.5.1/configure.ac~	2009-07-09 10:07:51.000000000 +0200
++++ libmpeg2-0.5.1/configure.ac	2009-07-09 10:08:42.000000000 +0200
+@@ -76,13 +76,15 @@
+ 	for TRY_CFLAGS in "-mpim-altivec -force_cpusubtype_ALL" -faltivec -maltivec -fvec; do
+ 	    AC_TRY_CFLAGS([$OPT_CFLAGS $TRY_CFLAGS $CFLAGS],
+ 		[save_CFLAGS="$CFLAGS"
+-		 CFLAGS="$OPT_CFLAGS $TRY_CFLAGS $CFLAGS"
++		 CFLAGS="$OPT_CFLAGS $TRY_CFLAGS $CFLAGS -Werror"
+ 		 AC_MSG_CHECKING([if <altivec.h> is needed])
+ 		 AC_TRY_COMPILE([],
+ 		    [typedef vector int t;
+ 		     vec_ld(0, (unsigned char *)0);],
+ 		    [have_altivec=yes; AC_MSG_RESULT(no)],
+-		    [AC_TRY_COMPILE([#include <altivec.h>],
++		    [CFLAGS="$save_CFLAGS"
++		     CFLAGS="$OPT_CFLAGS $TRY_CFLAGS $CFLAGS"
++		     AC_TRY_COMPILE([#include <altivec.h>],
+ 			[typedef vector int t; vec_ld(0, (unsigned char *)0);],
+ 			[AC_DEFINE([HAVE_ALTIVEC_H],,
+ 			    [Define to 1 if you have the <altivec.h> header.])
