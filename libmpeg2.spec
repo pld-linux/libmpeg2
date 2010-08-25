@@ -10,6 +10,7 @@ Source0:	http://libmpeg2.sourceforge.net/files/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ppc.patch
 URL:		http://libmpeg2.sourceforge.net/
 BuildRequires:	SDL-devel
+BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 %ifarch ppc
@@ -17,8 +18,6 @@ BuildRequires:	automake
 BuildRequires:	gcc >= 5:3.3.2-3
 %endif
 BuildRequires:	libtool
-BuildRequires:	xorg-lib-libXext-devel
-BuildRequires:	xorg-lib-libXv-devel
 Requires:	%{name}-libs = %{version}
 Obsoletes:	mpeg2dec < 0.5.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -46,8 +45,6 @@ Summary:	MPEG-2 Decoder development files
 Summary(pl.UTF-8):	Pliki dla programistów używających dekodera MPEG-2
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}
-Requires:	xorg-lib-libXext-devel
-Requires:	xorg-lib-libXv-devel
 Obsoletes:	mpeg2dec-devel < 0.5.1
 
 %description devel
