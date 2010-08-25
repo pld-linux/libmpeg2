@@ -32,8 +32,8 @@ Dekoder MPEG-2.
 %package libs
 Summary:	MPEG-2 Decoder library
 Summary(pl.UTF-8):	Biblioteka dekodująca pliki MPEG-2
-Obsoletes:	mpeg2dec-lib < 0.5.1
 Group:		Libraries
+Obsoletes:	mpeg2dec-lib < 0.5.1
 
 %description libs
 MPEG-2 Decoder library and extract_mpeg2 utility.
