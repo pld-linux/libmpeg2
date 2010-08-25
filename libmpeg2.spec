@@ -20,6 +20,7 @@ BuildRequires:	libtool
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXv-devel
 Requires:	%{name}-libs = %{version}
+Provides:	mpeg2dec = %{version}
 Obsoletes:	mpeg2dec < 0.5.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,6 +34,7 @@ Dekoder MPEG-2.
 Summary:	MPEG-2 Decoder library
 Summary(pl.UTF-8):	Biblioteka dekodująca pliki MPEG-2
 Group:		Libraries
+Provides:	mpeg2dec-lib = %{version}
 Obsoletes:	mpeg2dec-lib < 0.5.1
 
 %description libs
@@ -48,6 +50,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}
 Requires:	xorg-lib-libXext-devel
 Requires:	xorg-lib-libXv-devel
+Provides:	mpeg2dec-devel = %{version}
 Obsoletes:	mpeg2dec-devel < 0.5.1
 
 %description devel
@@ -61,6 +64,7 @@ Summary:	MPEG-2 Decoder static libraries
 Summary(pl.UTF-8):	Statyczne biblioteki dekodera MPEG-2
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
+Provides:	mpeg2dec-static = %{version}
 Obsoletes:	mpeg2dec-static < 0.5.1
 
 %description static
