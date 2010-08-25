@@ -2,7 +2,7 @@ Summary:	MPEG-2 Decoder
 Summary(pl.UTF-8):	Dekoder plików MPEG-2
 Name:		libmpeg2
 Version:	0.5.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://libmpeg2.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -19,6 +19,7 @@ BuildRequires:	gcc >= 5:3.3.2-3
 %endif
 BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}
+Provides:	mpeg2dec = %{version}
 Obsoletes:	mpeg2dec < 0.5.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,6 +33,7 @@ Dekoder MPEG-2.
 Summary:	MPEG-2 Decoder library
 Summary(pl.UTF-8):	Biblioteka dekodująca pliki MPEG-2
 Group:		Libraries
+Provides:	mpeg2dec-lib = %{version}
 Obsoletes:	mpeg2dec-lib < 0.5.1
 
 %description libs
@@ -45,6 +47,7 @@ Summary:	MPEG-2 Decoder development files
 Summary(pl.UTF-8):	Pliki dla programistów używających dekodera MPEG-2
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}
+Provides:	mpeg2dec-devel = %{version}
 Obsoletes:	mpeg2dec-devel < 0.5.1
 
 %description devel
@@ -58,6 +61,7 @@ Summary:	MPEG-2 Decoder static libraries
 Summary(pl.UTF-8):	Statyczne biblioteki dekodera MPEG-2
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
+Provides:	mpeg2dec-static = %{version}
 Obsoletes:	mpeg2dec-static < 0.5.1
 
 %description static
