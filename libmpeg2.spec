@@ -2,7 +2,7 @@ Summary:	MPEG-2 Decoder
 Summary(pl.UTF-8):	Dekoder plików MPEG-2
 Name:		libmpeg2
 Version:	0.5.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://libmpeg2.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -16,12 +16,18 @@ BuildRequires:	automake
 %ifarch ppc
 # version with altivec support (almost?) fixed
 BuildRequires:	gcc >= 5:3.3.2-3
+# see forced gcc4 at the bottom
+BuildRequires:	gcc >= 5:4.1
 %endif
 BuildRequires:	libtool
 Requires:	%{name}-libs = %{version}
 Provides:	mpeg2dec = %{version}
 Obsoletes:	mpeg2dec < 0.5.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%ifarch ppc
+%define		__cc	gcc4
+%endif
 
 %description
 MPEG-2 Decoder.
