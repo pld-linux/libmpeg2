@@ -3,15 +3,15 @@ Summary(pl.UTF-8):	Dekoder plików MPEG-2
 Name:		libmpeg2
 Version:	0.5.1
 Release:	4
-License:	GPL
+License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://libmpeg2.sourceforge.net/files/%{name}-%{version}.tar.gz
 # Source0-md5:	0f92c7454e58379b4a5a378485bbd8ef
 Patch0:		%{name}-ppc.patch
 URL:		http://libmpeg2.sourceforge.net/
 BuildRequires:	SDL-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.54
+BuildRequires:	automake >= 1.5
 %ifarch ppc
 # version with altivec support (almost?) fixed
 BuildRequires:	gcc >= 5:3.3.2-3
@@ -19,7 +19,7 @@ BuildRequires:	gcc >= 5:3.3.2-3
 BuildRequires:	libtool
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXv-devel
-Requires:	%{name}-libs = %{version}
+Requires:	%{name}-libs = %{version}-%{release}
 Provides:	mpeg2dec = %{version}
 Obsoletes:	mpeg2dec < 0.5.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,9 +47,7 @@ Biblioteka dekodująca pliki MPEG-2 i narzędzie extract_mpeg2.
 Summary:	MPEG-2 Decoder development files
 Summary(pl.UTF-8):	Pliki dla programistów używających dekodera MPEG-2
 Group:		Development/Libraries
-Requires:	%{name}-libs = %{version}
-Requires:	xorg-lib-libXext-devel
-Requires:	xorg-lib-libXv-devel
+Requires:	%{name}-libs = %{version}-%{release}
 Provides:	mpeg2dec-devel = %{version}
 Obsoletes:	mpeg2dec-devel < 0.5.1
 
@@ -63,7 +61,7 @@ Pliki dla programistów używających dekodera MPEG-2.
 Summary:	MPEG-2 Decoder static libraries
 Summary(pl.UTF-8):	Statyczne biblioteki dekodera MPEG-2
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 Provides:	mpeg2dec-static = %{version}
 Obsoletes:	mpeg2dec-static < 0.5.1
 
@@ -109,11 +107,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/corrupt_mpeg2
 %attr(755,root,root) %{_bindir}/extract_mpeg2
-%attr(755,root,root) %{_libdir}/libmpeg2.so.*.*
+%attr(755,root,root) %{_libdir}/libmpeg2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libmpeg2.so.0
-%attr(755,root,root) %{_libdir}/libmpeg2convert.so.*.*
+%attr(755,root,root) %{_libdir}/libmpeg2convert.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libmpeg2convert.so.0
 %{_mandir}/man1/extract_mpeg2.1*
 
