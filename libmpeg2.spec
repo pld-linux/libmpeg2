@@ -2,7 +2,7 @@ Summary:	MPEG-2 Decoder
 Summary(pl.UTF-8):	Dekoder plików MPEG-2
 Name:		libmpeg2
 Version:	0.5.1
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://libmpeg2.sourceforge.net/files/%{name}-%{version}.tar.gz
