@@ -5,6 +5,7 @@ Version:	0.5.1
 Release:	5
 License:	GPL v2+
 Group:		X11/Applications/Graphics
+#Source0Download: http://libmpeg2.sourceforge.net/downloads.html
 Source0:	http://libmpeg2.sourceforge.net/files/%{name}-%{version}.tar.gz
 # Source0-md5:	0f92c7454e58379b4a5a378485bbd8ef
 Patch0:		%{name}-ppc.patch
