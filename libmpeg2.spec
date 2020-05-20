@@ -1,10 +1,10 @@
-Summary:	MPEG-2 Decoder
-Summary(pl.UTF-8):	Dekoder plików MPEG-2
+Summary:	MPEG-2 Decoder library
+Summary(pl.UTF-8):	Biblioteka dekodująca pliki MPEG-2
 Name:		libmpeg2
 Version:	0.5.1
-Release:	5
+Release:	6
 License:	GPL v2+
-Group:		X11/Applications/Graphics
+Group:		Libraries
 #Source0Download: http://libmpeg2.sourceforge.net/downloads.html
 Source0:	http://libmpeg2.sourceforge.net/files/%{name}-%{version}.tar.gz
 # Source0-md5:	0f92c7454e58379b4a5a378485bbd8ef
@@ -21,34 +21,23 @@ BuildRequires:	libtool
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXv-devel
 Requires:	%{name}-libs = %{version}-%{release}
-Provides:	mpeg2dec = %{version}
-Obsoletes:	mpeg2dec < 0.5.1
+Provides:	libmpeg2-libs = %{version}-%{release}
+Provides:	mpeg2dec-lib = %{version}
+Obsoletes:	mpeg2dec-lib < 0.5.1
+Obsoletes:	libmpeg2-libs < 0.5.1-6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-MPEG-2 Decoder.
-
-%description -l pl.UTF-8
-Dekoder MPEG-2.
-
-%package libs
-Summary:	MPEG-2 Decoder library
-Summary(pl.UTF-8):	Biblioteka dekodująca pliki MPEG-2
-Group:		Libraries
-Provides:	mpeg2dec-lib = %{version}
-Obsoletes:	mpeg2dec-lib < 0.5.1
-
-%description libs
 MPEG-2 Decoder library and extract_mpeg2 utility.
 
-%description libs -l pl.UTF-8
+%description -l pl.UTF-8
 Biblioteka dekodująca pliki MPEG-2 i narzędzie extract_mpeg2.
 
 %package devel
 Summary:	MPEG-2 Decoder development files
 Summary(pl.UTF-8):	Pliki dla programistów używających dekodera MPEG-2
 Group:		Development/Libraries
-Requires:	%{name}-libs = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 Provides:	mpeg2dec-devel = %{version}
 Obsoletes:	mpeg2dec-devel < 0.5.1
 
@@ -71,6 +60,18 @@ MPEG-2 Decoder static libraries.
 
 %description static -l pl.UTF-8
 Statyczne biblioteki dekodera MPEG-2.
+
+%package -n mpeg2dec
+Summary:	MPEG-2 Decoder
+Summary(pl.UTF-8):	Dekoder plików MPEG-2
+Group:		X11/Applications/Graphics
+Requires:	%{name} = %{version}-%{release}
+
+%description -n mpeg2dec
+MPEG-2 Decoder.
+
+%description -n mpeg2dec -l pl.UTF-8
+Dekoder MPEG-2.
 
 %prep
 %setup -q
@@ -98,15 +99,10 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	libs -p /sbin/ldconfig
-%postun	libs -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/mpeg2dec
-%{_mandir}/man1/mpeg2dec.1*
-
-%files libs
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/corrupt_mpeg2
@@ -131,3 +127,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libmpeg2.a
 %{_libdir}/libmpeg2convert.a
+
+%files -n mpeg2dec
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/mpeg2dec
+%{_mandir}/man1/mpeg2dec.1*
